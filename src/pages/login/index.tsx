@@ -1,6 +1,7 @@
 import logoImg from '../../assets/logoImg.svg'
 import { Link } from 'react-router-dom'
 import { Container } from '../../components/container'
+
 import { Input } from '../../components/input'
 import { useForm} from 'react-hook-form'
 import { z } from 'zod'
@@ -36,7 +37,7 @@ export function Login() {
                 </Link>
 
                 <form 
-                    className="bg-white max-w-xl w-full rounded-lg"
+                    className="bg-white max-w-xl w-full rounded-lg p-4"
                     onSubmit={handleSubmit(onSubmit)}
                 >
                     <div className='mb-3'>
@@ -59,10 +60,14 @@ export function Login() {
                         />
                     </div>
                     
-                    <button>
+                    <button type='submit' className='bg-zinc-900 w-full rounded-md text-white h-10 font-medium hover:bg-zinc-700'>
                         Acessar
                     </button>
                 </form>
+
+                <Link to="/register">
+                    Ainda nao possui uma conta? Cadastre-se.
+                </Link>
             </div>
         </Container>
     )
