@@ -1,4 +1,4 @@
-import logoImg from '../../assets/logoImg.svg';
+import logoImg from '../../assets/logoImg.png';
 import { Link } from 'react-router-dom';
 import { FiUser, FiLogIn } from 'react-icons/fi';
 
@@ -8,11 +8,12 @@ export function Header() {
 
 
 	return (
-		<div className="w-full flex items-center justify-center h-16 bg-white drop-shadow mb-4">
-			<header className='flex w-full max-w-7x1 items-center justify-between px-4 mx-auto'>
+		<div className="w-full flex items-center justify-center h-16 bg-red-500 drop-shadow mb-4">
+			<header className='flex w-full max-w-7xl items-center justify-between px-4 mx-auto'>
 				<Link to="/">
 					<img
-						src={logoImg}
+						className='h-12 w-32 rounded-lg object-cover'
+						src={ logoImg }
 						alt="Logo do site"
 					/>
 				</Link>

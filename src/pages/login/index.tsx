@@ -1,11 +1,14 @@
-import logoImg from '../../assets/logoImg.svg'
-import { Link } from 'react-router-dom'
+import { useEffect } from 'react'
+import logoImg from "../../assets/logoImg.png";
+import { Link, useNavigate } from 'react-router-dom'
 import { Container } from '../../components/container'
 
 import { Input } from '../../components/input'
 import { useForm} from 'react-hook-form'
 import { z } from 'zod'
 import { zodResolver } from '@hookform/resolvers/zod'
+import { signInWithEmailAndPassword, signOut } from 'firebase/auth'
+import { auth } from '../../services/firebaseConnection'
 
 const schema = z.object({
     email: z.string().email("Insira um email valido!").nonempty("O campo email e obrigatorio!"),
@@ -21,8 +24,24 @@ export function Login() {
         mode: "onChange"
     })
 
+    const navigate = useNavigate();
+
+    useEffect(() => {
+        async function handleLogout() {
+            await signOut(auth);
+        }
+        handleLogout();
+    }, []);
+
     function onSubmit(data: FormData) {
-        console.log(data);
+        signInWithEmailAndPassword(auth, data.email, data.password)
+            .then((user) => {
+                console.log("User successfully logged in!");
+                navigate("/dashboard", { replace: true });
+            })
+            .catch((error) => {
+                console.error(error);
+            });
     }
 
     return (
@@ -32,7 +51,7 @@ export function Login() {
                     <img 
                         src={logoImg} 
                         alt="Logo do site"
-                        className='w-full' 
+                        className='w-full h-60 rounded-lg object-cover' 
                     />
                 </Link>
 

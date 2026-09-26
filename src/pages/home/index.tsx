@@ -7,15 +7,15 @@ export function Home() {
             <section className="bg-gray-200 p-4 rounded-lg w-full max-w-3xl mx-auto flex justify-center items-center gap-2">
                 <input
                     className="w-full border-2 rounded-lg h-9 px-3 outline-none"
-                    placeholder="Digite o nome do carro..."
+                    placeholder="Search for cars..."
                 />
                 <button className="bg-red-500 h-9 px-8 rounded-lg text-white font-medium text-lg">
-                    Buscar
+                    Search
                 </button>
             </section>
 
             <h1 className="font-bold text-center mt-6 text-2xl mb-4">
-                Carros novos e usados em todo o UK
+                New and used cars across the UK
             </h1>
 
             {/* MAIN */}
